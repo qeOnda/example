@@ -25,7 +25,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-       - name: Setup Node.js environment
+      - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.4
         with: 
           version: 12.x
@@ -36,3 +36,13 @@ jobs:
         run: |
           yarn install --production
           yarn build
+
+      - name: Netlify deployment      
+        uses: nwtgck/actions-netlify@v1.1.11      
+        with:
+          publish-dir: './frontend-gatsby/public'
+          production-branch: main 
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+              
