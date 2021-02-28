@@ -10,6 +10,13 @@ module.exports = {
 	    repo: 'example',
 	    event_type: 'created'
 	  })
-	}
+	},
+	async afterUpdate(data) {			
+	  await octokit.request('POST /repos/{owner}/{repo}/dispatches', {
+	    owner: 'qeOnda',
+        repo: 'example',
+	    event_type: 'updated'
+	  })
+	},
   }
 };
