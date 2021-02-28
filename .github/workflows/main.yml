@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Netlify builds
 
 # Controls when the action will run. 
 on:
@@ -8,7 +8,7 @@ on:
   push:
     branches: [ main ]
   repository_dispatch:
-    types: [created, ]
+    types: [created, updated, deleted]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -29,14 +29,15 @@ jobs:
         uses: actions/setup-node@v2.1.4
         with: 
           version: 12.x
+          
 
       # Runs a set of commands using the runners shell
       - name: Build site
-        working-directory: ./gatsby-blog
+        working-directory: ./frontend-gatsby
         run: |
           yarn install --production
           yarn build
-
+          
       - name: Netlify deployment      
         uses: nwtgck/actions-netlify@v1.1.11      
         with:
@@ -45,4 +46,4 @@ jobs:
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-              
+        
