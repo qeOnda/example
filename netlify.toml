@@ -1,8 +1,15 @@
 # example netlify.toml
 [build]
+<<<<<<< HEAD
   command = "gatsby build"
   functions = "functions"
   publish = "frontend-gatsby/public"
+=======
+  base = "frontend-gatsby"
+  publish = "/public"
+  command = "gatsby build"
+  functions = "functions"  
+>>>>>>> 24d6e45bf92f4ed9cf14785a703bef3ea54a21f3
 
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
   ## Not needed for static site generators.

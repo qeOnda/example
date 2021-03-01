@@ -11,6 +11,10 @@
   },
   "devDependencies": {},
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "@octokit/core": "^3.2.5",
+>>>>>>> 24d6e45bf92f4ed9cf14785a703bef3ea54a21f3
     "knex": "<0.20.0",
     "pg": "^8.5.1",
     "pg-connection-string": "^2.4.0",
